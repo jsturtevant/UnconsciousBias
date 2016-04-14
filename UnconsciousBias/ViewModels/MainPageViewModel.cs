@@ -100,10 +100,11 @@ namespace UnconsciousBias.ViewModels
                 double averageSentimentScore = scoreSum / scoreCount;
                 int sentimentPercentage = Convert.ToInt32(averageSentimentScore * 100);
 
-                result = new UnconsiousBiasResult()
+                 result = new UnconsiousBiasResult()
                 {
-                    Positivity = sentimentPercentage,
-                    KeyWords = "TODO",
+                    Positivity = 90,
+                    KeyWords = "Hey hey",
+                    Topics = "Lunch spots",
                     PositivityGraph = sentimentScores.ToArray()
                 };
             }

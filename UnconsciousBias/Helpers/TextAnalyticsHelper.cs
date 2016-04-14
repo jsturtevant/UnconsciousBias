@@ -22,7 +22,7 @@ namespace UnconsciousBias.Helpers
         /// <summary>
         /// Your account key goes here.  Request access to the TextAnalytics service from https://www.microsoft.com/cognitive.  
         /// </summary>
-        private const string AccountKey = "TODO";
+        private const string AccountKey = "";
 
         public static async Task<List<double>> GetSentiment(string textToProcess)
         {

@@ -49,6 +49,19 @@ namespace UnconsciousBias.ViewModels
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
             _result =  parameter as UnconsiousBiasResult;
+
+            this.Value = _result.Positivity.ToString();
+            foreach(var result  in _result.PositivityGraph)
+            {
+                var point = new Datapoint()
+                {
+                    X = 1,
+                    Y = result
+                };
+
+                this.PositivityGraph.Add(point);
+            }
+
             await Task.CompletedTask;
         }
 
