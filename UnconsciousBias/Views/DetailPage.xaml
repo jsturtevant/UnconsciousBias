@@ -60,8 +60,9 @@
                       RelativePanel.Below="pageHeader"
                       VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="You passed:" />
-                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{x:Bind ViewModel.Value, Mode=OneWay, FallbackValue=DesigntimeValue}" />
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center" Text="Your overall average positivity towards this person is" />
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" FontSize="48" HorizontalAlignment="Center" Text="{x:Bind ViewModel.Value, Mode=OneWay, FallbackValue=DesigntimeValue}" />
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text=" " />
 
                 <!-- linear scatter point -->
                 <chart:RadCartesianChart x:Name="ScatterPointSeries"

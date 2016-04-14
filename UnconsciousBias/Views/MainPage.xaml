@@ -28,11 +28,19 @@
 
         </controls:PageHeader>
 
+        <TextBlock 
+            Name="txtDescription"
+            RelativePanel.Below="pageHeader"
+                   RelativePanel.AlignLeftWithPanel="True"
+                   Margin="16,16,16,0"
+            TextWrapping="Wrap"
+                   Text="Sometimes we may not notice if the tone of our emails is overly positive or negative.  It's important to occasionally stop and reflect that we are treating the people around us with respect.  This tool allows you to use data to analyze the sentiment of your emails to a given email address.  Please enter the email address of someone to see the sentiment of your emails to that person over time:"/>
+
         <controls:Resizer x:Name="parameterResizer" Margin="16,16,16,0"
                           RelativePanel.AlignLeftWithPanel="True"
-                          RelativePanel.Below="pageHeader">
+                          RelativePanel.Below="txtDescription">
 
-            <TextBox MinWidth="200"
+            <TextBox MinWidth="250"
                      Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      PlaceholderText="Enter an email here"
                      TextWrapping="Wrap">

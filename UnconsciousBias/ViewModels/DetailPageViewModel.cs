@@ -45,7 +45,7 @@ namespace UnconsciousBias.ViewModels
             _result =  parameter as UnconsiousBiasResult;
             //_result.PositivityGraph = new double[] { 0.924, 0.806, 0.976, 0.945, 0.999, 0.681, 0.973, 0.994, 0.958, 0.553};
 
-            this.Value = _result.Positivity.ToString();
+            this.Value = $"{_result.Positivity.ToString()}%";
             int i = 1;
             foreach(var result  in _result.PositivityGraph)
             {
