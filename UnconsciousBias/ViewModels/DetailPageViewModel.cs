@@ -23,9 +23,12 @@ namespace UnconsciousBias.ViewModels
         private string _Value = "Default";
         public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
+        private UnconsiousBiasResult _result;
+
+
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
-            Value = (suspensionState.ContainsKey(nameof(Value))) ? suspensionState[nameof(Value)]?.ToString() : parameter?.ToString();
+            _result =  parameter as UnconsiousBiasResult;
             await Task.CompletedTask;
         }
 

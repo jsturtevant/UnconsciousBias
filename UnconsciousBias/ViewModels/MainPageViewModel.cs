@@ -69,8 +69,16 @@ namespace UnconsciousBias.ViewModels
                 }
             }
 
+
+            var result = new UnconsiousBiasResult()
+            {
+                Positivity = 90,
+                KeyWords = "Hey hey",
+                Topics = "Lunch spots"
+            };
+
             // can pass value to other screen and do fancy display
-            NavigationService.Navigate(typeof(Views.DetailPage), Value);
+            NavigationService.Navigate(typeof(Views.DetailPage), result);
 
             await Task.CompletedTask;
         }
@@ -84,6 +92,13 @@ namespace UnconsciousBias.ViewModels
         public void GotoAbout() =>
             NavigationService.Navigate(typeof(Views.SettingsPage), 2);
 
+    }
+
+    public class UnconsiousBiasResult
+    {
+        public int Positivity { get; set; }
+        public string KeyWords { get; set; }
+        public string Topics { get; set; }
     }
 }
 
