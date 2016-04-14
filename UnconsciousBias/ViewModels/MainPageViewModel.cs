@@ -20,7 +20,7 @@ namespace UnconsciousBias.ViewModels
             }
         }
 
-        string _Value = "email@domain.com";
+        string _Value = "";
         public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
