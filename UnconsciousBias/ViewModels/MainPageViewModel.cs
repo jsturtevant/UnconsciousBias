@@ -50,10 +50,22 @@ namespace UnconsciousBias.ViewModels
             await Task.CompletedTask;
         }
 
+        //DelegateCommand _ShowBusyCommand;
+        //public DelegateCommand ShowBusyCommand
+        //    => _ShowBusyCommand ?? (_ShowBusyCommand = new DelegateCommand(async () =>
+        //    {
+        //        Views.Busy.SetBusy(true, _BusyText);
+        //        await Task.Delay(5000);
+        //        Views.Busy.SetBusy(false);
+        //    }, () => !string.IsNullOrEmpty(BusyText)));
+
         public async Task GotoDetailsPage()
         {
+            Views.Busy.SetBusy(true, "Getting your score...");
             UnconsiousBiasResult result = null;
             var graphClient = await AuthenticationHelper.GetAuthenticatedClientAsync();
+
+            
 
             if (graphClient != null)
             {
@@ -108,6 +120,8 @@ namespace UnconsciousBias.ViewModels
                     PositivityGraph = sentimentScores
                 };
             }
+
+            //NavigationService.
 
             // can pass value to other screen and do fancy display
             NavigationService.Navigate(typeof(Views.DetailPage), result);

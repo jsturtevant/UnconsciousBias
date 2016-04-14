@@ -59,6 +59,8 @@ namespace UnconsciousBias.ViewModels
                 this.PositivityGraph.Add(point);
             }
 
+            Views.Busy.SetBusy(false);
+
             await Task.CompletedTask;
         }
 
