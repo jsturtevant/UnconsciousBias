@@ -24,6 +24,9 @@ namespace UnconsciousBias.ViewModels
         private string _Value = "Default";
         public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
+        private string _message = "Default";
+        public string Message { get { return _message; } set { Set(ref _message, value); } }
+
         private UnconsiousBiasResult _result;
         public UnconsiousBiasResult Result { get { return _result; } set { Set(ref _result, value); } }
 
@@ -44,6 +47,7 @@ namespace UnconsciousBias.ViewModels
         {
             _result =  parameter as UnconsiousBiasResult;
             //_result.PositivityGraph = new double[] { 0.924, 0.806, 0.976, 0.945, 0.999, 0.681, 0.973, 0.994, 0.958, 0.553};
+            this.Message = $"Your overall average positivity towards {_result.Person} is";
 
             this.Value = $"{_result.Positivity.ToString()}%";
             int i = 1;
