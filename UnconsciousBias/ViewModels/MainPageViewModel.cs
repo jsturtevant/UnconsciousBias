@@ -7,6 +7,9 @@ using Template10.Services.NavigationService;
 using Windows.UI.Xaml.Navigation;
 using UnconsciousBias.Helpers;
 using System.Diagnostics;
+using System.Text;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace UnconsciousBias.ViewModels
 {
@@ -49,6 +52,7 @@ namespace UnconsciousBias.ViewModels
 
         public async Task GotoDetailsPage()
         {
+            UnconsiousBiasResult result = null;
             var graphClient = await AuthenticationHelper.GetAuthenticatedClientAsync();
 
             if (graphClient != null)
@@ -57,25 +61,52 @@ namespace UnconsciousBias.ViewModels
                                             .Messages
                                             .Request()
                                             .Search($"\"to:{Value}\"")
+                                            .Select("UniqueBody")
                                             .GetAsync();
 
 
-
-
+                StringBuilder sb = new StringBuilder();
+                sb.Append("{\"documents\":[");
+                int i = 1;
                 foreach (var email in emails)
                 {
-                    //add call here
                     Debug.WriteLine(email.UniqueBody);
+
+                    // This is super-hacky processing out the HTML tags from the email.  
+                    // TODO: replace this with a proper library that will do this better.  
+                    string body = email.UniqueBody.Content;
+                    string bodyWithoutHTMLtags = WebUtility.HtmlDecode(Regex.Replace(body, "<[^>]*(>|$)", string.Empty));
+                    string step2 = Regex.Replace(bodyWithoutHTMLtags, @"[\s\r\n]+", " ");
+                    sb.Append("{\"id\":\"" + i + "\",\"text\":\"" + step2 + "\"},");
+                    i++;
                 }
+                // Remove the trailing comma to get well-formatted JSON
+                string tempString = sb.ToString();
+                if (tempString.LastIndexOf(",") == tempString.Length - 1) sb.Remove(tempString.Length - 1, 1);
+
+                // Close JSON message
+                sb.Append("]}");
+
+                List<double> sentimentScores = await TextAnalyticsHelper.GetSentiment(sb.ToString());
+
+                // Calculate average sentiment score
+                double scoreSum = 0.0;
+                int scoreCount = 0;
+                foreach (double sentimentScore in sentimentScores)
+                {
+                    scoreSum += sentimentScore;
+                    scoreCount++;
+                }
+                double averageSentimentScore = scoreSum / scoreCount;
+                int sentimentPercentage = Convert.ToInt32(averageSentimentScore * 100);
+
+                result = new UnconsiousBiasResult()
+                {
+                    Positivity = sentimentPercentage,
+                    KeyWords = "TODO",
+                    PositivityGraph = sentimentScores.ToArray()
+                };
             }
-
-
-            var result = new UnconsiousBiasResult()
-            {
-                Positivity = 90,
-                KeyWords = "Hey hey",
-                Topics = "Lunch spots"
-            };
 
             // can pass value to other screen and do fancy display
             NavigationService.Navigate(typeof(Views.DetailPage), result);
@@ -99,6 +130,7 @@ namespace UnconsciousBias.ViewModels
         public int Positivity { get; set; }
         public string KeyWords { get; set; }
         public string Topics { get; set; }
+        public double[] PositivityGraph { get; set; }
     }
 }
 
