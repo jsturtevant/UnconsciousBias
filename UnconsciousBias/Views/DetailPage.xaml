@@ -72,7 +72,7 @@
                         <chart:LinearAxis />
                     </chart:RadCartesianChart.HorizontalAxis>
                     <chart:RadCartesianChart.VerticalAxis>
-                        <chart:LinearAxis HorizontalLocation="Left" />
+                        <chart:LinearAxis HorizontalLocation="Left" MinHeight="1000" />
                     </chart:RadCartesianChart.VerticalAxis>
 
                     <chart:ScatterPointSeries ItemsSource="{Binding PositivityGraph}">
