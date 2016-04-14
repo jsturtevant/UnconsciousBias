@@ -103,9 +103,9 @@ namespace UnconsciousBias.ViewModels
                  result = new UnconsiousBiasResult()
                 {
                     Positivity = 90,
-                    KeyWords = "Hey hey",
-                    Topics = "Lunch spots",
-                    PositivityGraph = sentimentScores.ToArray()
+                    KeyWords = "TODO",
+                    Topics = "TODO" //,
+ //                   PositivityGraph = sentimentScores.ToArray()
                 };
             }
 
