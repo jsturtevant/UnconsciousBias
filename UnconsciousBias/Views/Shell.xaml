@@ -28,7 +28,7 @@
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:Login">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Width="48" Height="48"
-                                Symbol="Home" />
+                                Symbol="Account" />
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
                                Text="Login" />
 

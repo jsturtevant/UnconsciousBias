@@ -17,14 +17,8 @@ namespace UnconsciousBias.ViewModels
     {
         public LoginViewModel()
         {
-            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
-            {
-                Value = "Designtime value";
-            }
+           
         }
-
-        string _Value = "Gas";
-        public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
         string _message = "Please enter you credentials";
         public string Message { get { return _message; } set { Set(ref _message, value); } }
@@ -33,7 +27,7 @@ namespace UnconsciousBias.ViewModels
         {
             if (suspensionState.Any())
             {
-                Value = suspensionState[nameof(Value)]?.ToString();
+                Message = suspensionState[nameof(Message)]?.ToString();
             }
             await Task.CompletedTask;
         }
@@ -42,7 +36,7 @@ namespace UnconsciousBias.ViewModels
         {
             if (suspending)
             {
-                suspensionState[nameof(Value)] = Value;
+                suspensionState[nameof(Message)] = Message;
             }
             await Task.CompletedTask;
         }
@@ -61,23 +55,8 @@ namespace UnconsciousBias.ViewModels
             {
                 var user = await graphClient.Me.Request().GetAsync();
 
-                var emails = await graphClient.Me
-                                            .Messages
-                                            .Request()
-                                            .Search("\"to:jstur@microsoft.com\"")
-                                            .GetAsync();
-
-
-
-
-                foreach (var email in emails)
-                {
-                    Debug.WriteLine(email.BodyPreview);
-                }
-
-                string userId = user.Id;
+                this.Message = $"Welcome {user.DisplayName}";
                 await Task.CompletedTask;
-
             }
             else
             {

@@ -41,8 +41,8 @@
         <TextBlock x:Name="stateTextBox" Margin="16,16,0,0"
                     RelativePanel.AlignLeftWithPanel="True"
                           RelativePanel.Below="submitButton" 
-                   Text="{Binding ViewModel.Message}" />
-
+                   Text="{x:Bind ViewModel.Message, Mode=TwoWay}" />
+     
     </RelativePanel>
 </Page>
 
