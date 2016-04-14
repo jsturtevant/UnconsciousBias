@@ -18,7 +18,6 @@ namespace UnconsciousBias.ViewModels
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
                 Value = "Designtime value";
-
             }
         }
 

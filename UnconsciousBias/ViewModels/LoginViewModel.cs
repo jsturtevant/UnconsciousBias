@@ -20,7 +20,7 @@ namespace UnconsciousBias.ViewModels
            
         }
 
-        string _message = "Please enter you credentials";
+        string _message = "Please enter your credentials";
         public string Message { get { return _message; } set { Set(ref _message, value); } }
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
