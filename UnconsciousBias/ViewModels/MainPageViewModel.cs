@@ -53,12 +53,10 @@ namespace UnconsciousBias.ViewModels
 
             if (graphClient != null)
             {
-                var user = await graphClient.Me.Request().GetAsync();
-
                 var emails = await graphClient.Me
                                             .Messages
                                             .Request()
-                                            .Search("\"to:jstur@microsoft.com\"")
+                                            .Search($"\"to:{Value}\"")
                                             .GetAsync();
 
 
@@ -67,7 +65,7 @@ namespace UnconsciousBias.ViewModels
                 foreach (var email in emails)
                 {
                     //add call here
-                    Debug.WriteLine(email.BodyPreview);
+                    Debug.WriteLine(email.UniqueBody);
                 }
             }
 
