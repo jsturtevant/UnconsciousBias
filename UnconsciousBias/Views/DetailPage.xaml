@@ -9,6 +9,7 @@
       xmlns:local="using:UnconsciousBias.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:vm="using:UnconsciousBias.ViewModels" x:Name="ThisPage"
+      xmlns:chart="using:Telerik.UI.Xaml.Controls.Chart"
       mc:Ignorable="d">
 
     <Page.DataContext>
@@ -61,6 +62,29 @@
             <StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="You passed:" />
                 <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{x:Bind ViewModel.Value, Mode=OneWay, FallbackValue=DesigntimeValue}" />
+
+                <!-- linear scatter point -->
+                <chart:RadCartesianChart x:Name="ScatterPointSeries"
+                                 Grid.Row="2"
+                                 Grid.Column="1">
+                    <chart:RadCartesianChart.HorizontalAxis>
+                        <chart:LinearAxis />
+                    </chart:RadCartesianChart.HorizontalAxis>
+                    <chart:RadCartesianChart.VerticalAxis>
+                        <chart:LinearAxis LabelFormat="{}{0:C0}"
+                                  HorizontalLocation="Left" />
+                    </chart:RadCartesianChart.VerticalAxis>
+
+                    <chart:ScatterPointSeries ItemsSource="{Binding PositivityGraph}">
+                        <chart:ScatterPointSeries.XValueBinding>
+                            <chart:PropertyNameDataPointBinding PropertyName="X" />
+                        </chart:ScatterPointSeries.XValueBinding>
+                        <chart:ScatterPointSeries.YValueBinding>
+                            <chart:PropertyNameDataPointBinding PropertyName="Y" />
+                        </chart:ScatterPointSeries.YValueBinding>
+                    </chart:ScatterPointSeries>
+                </chart:RadCartesianChart>
+
             </StackPanel>
         </ScrollViewer>
 

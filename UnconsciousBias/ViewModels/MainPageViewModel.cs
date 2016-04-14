@@ -16,10 +16,10 @@ namespace UnconsciousBias.ViewModels
         {
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
-                Value = "Designtime value";
-            }
+                Value = "Designtime value";              
+            }   
         }
-
+       
         string _Value = "";
         public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
@@ -99,6 +99,26 @@ namespace UnconsciousBias.ViewModels
         public int Positivity { get; set; }
         public string KeyWords { get; set; }
         public string Topics { get; set; }
+        public double[] PositivityGraph { get; } = { 20, 30, 50, 10, 60, 40, 20, 80 };
+    }
+
+    public class Datapoint : ViewModelBase
+    {
+
+        private int _x;
+        private double _y;
+
+        public int X
+        {
+            get { return _x; }
+            set { Set(ref _x, value); }
+        }
+
+        public double Y
+        {
+            get { return _y; }
+            set { Set(ref _y, value); }
+        }
     }
 }
 
