@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Template10.Services.NavigationService;
 using Windows.UI.Xaml.Navigation;
+using UnconsciousBias.Helpers;
+using System.Diagnostics;
 
 namespace UnconsciousBias.ViewModels
 {
@@ -18,7 +20,7 @@ namespace UnconsciousBias.ViewModels
             }
         }
 
-        string _Value = "Gas";
+        string _Value = "email@domain.com";
         public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
@@ -45,8 +47,35 @@ namespace UnconsciousBias.ViewModels
             await Task.CompletedTask;
         }
 
-        public void GotoDetailsPage() =>
+        public async Task GotoDetailsPage()
+        {
+            var graphClient = await AuthenticationHelper.GetAuthenticatedClientAsync();
+
+            if (graphClient != null)
+            {
+                var user = await graphClient.Me.Request().GetAsync();
+
+                var emails = await graphClient.Me
+                                            .Messages
+                                            .Request()
+                                            .Search("\"to:jstur@microsoft.com\"")
+                                            .GetAsync();
+
+
+
+
+                foreach (var email in emails)
+                {
+                    //add call here
+                    Debug.WriteLine(email.BodyPreview);
+                }
+            }
+
+            // can pass value to other screen and do fancy display
             NavigationService.Navigate(typeof(Views.DetailPage), Value);
+
+            await Task.CompletedTask;
+        }
 
         public void GotoSettings() =>
             NavigationService.Navigate(typeof(Views.SettingsPage), 0);

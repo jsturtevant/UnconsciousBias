@@ -26,6 +26,9 @@ namespace UnconsciousBias.ViewModels
         string _Value = "Gas";
         public string Value { get { return _Value; } set { Set(ref _Value, value); } }
 
+        string _message = "Please enter you credentials";
+        public string Message { get { return _message; } set { Set(ref _message, value); } }
+
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
             if (suspensionState.Any())
@@ -58,10 +61,14 @@ namespace UnconsciousBias.ViewModels
             {
                 var user = await graphClient.Me.Request().GetAsync();
 
-                var rq = graphClient.Me.Messages.Request();
-                rq.QueryOptions.Add(new QueryOption("$search", "\"to:jstur@microsoft.com\""));
-                var emails = await rq.GetAsync();
-             
+                var emails = await graphClient.Me
+                                            .Messages
+                                            .Request()
+                                            .Search("\"to:jstur@microsoft.com\"")
+                                            .GetAsync();
+
+
+
 
                 foreach (var email in emails)
                 {
@@ -79,5 +86,14 @@ namespace UnconsciousBias.ViewModels
         }
 
 
+    }
+
+    public static class UserMessagesCollectionRequestExtensions
+    {
+        public static IUserMessagesCollectionRequest Search(this IUserMessagesCollectionRequest request,  string value)
+        {
+            request.QueryOptions.Add(new QueryOption("$search", value));
+            return request;
+        }
     }
 }
