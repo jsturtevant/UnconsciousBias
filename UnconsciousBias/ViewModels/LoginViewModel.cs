@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Graph;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,7 +57,17 @@ namespace UnconsciousBias.ViewModels
             if (graphClient != null)
             {
                 var user = await graphClient.Me.Request().GetAsync();
-                
+
+                var rq = graphClient.Me.Messages.Request();
+                rq.QueryOptions.Add(new QueryOption("$search", "\"to:jstur@microsoft.com\""));
+                var emails = await rq.GetAsync();
+             
+
+                foreach (var email in emails)
+                {
+                    Debug.WriteLine(email.BodyPreview);
+                }
+
                 string userId = user.Id;
                 await Task.CompletedTask;
 
