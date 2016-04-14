@@ -104,8 +104,8 @@ namespace UnconsciousBias.ViewModels
                 {
                     Positivity = 90,
                     KeyWords = "TODO",
-                    Topics = "TODO" //,
- //                   PositivityGraph = sentimentScores.ToArray()
+                    Topics = "TODO" ,
+                    PositivityGraph = sentimentScores
                 };
             }
 
@@ -131,7 +131,7 @@ namespace UnconsciousBias.ViewModels
         public int Positivity { get; set; }
         public string KeyWords { get; set; }
         public string Topics { get; set; }
-        public double[] PositivityGraph { get; set; } 
+        public List<double> PositivityGraph { get; set; } 
     }
 
     public class Datapoint : ViewModelBase
