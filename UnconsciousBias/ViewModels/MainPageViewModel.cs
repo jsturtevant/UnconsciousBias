@@ -62,10 +62,8 @@ namespace UnconsciousBias.ViewModels
         public async Task GotoDetailsPage()
         {
             Views.Busy.SetBusy(true, "Getting your score...");
-            UnconsiousBiasResult result = null;
+            UnconsciousBiasResult result = null;
             var graphClient = await AuthenticationHelper.GetAuthenticatedClientAsync();
-
-            
 
             if (graphClient != null)
             {
@@ -75,7 +73,6 @@ namespace UnconsciousBias.ViewModels
                                             .Search($"\"to:{Value}\"")
                                             .Select("UniqueBody")
                                             .GetAsync();
-
 
                 StringBuilder sb = new StringBuilder();
                 sb.Append("{\"documents\":[");
@@ -92,6 +89,7 @@ namespace UnconsciousBias.ViewModels
                     sb.Append("{\"id\":\"" + i + "\",\"text\":\"" + step2 + "\"},");
                     i++;
                 }
+
                 // Remove the trailing comma to get well-formatted JSON
                 string tempString = sb.ToString();
                 if (tempString.LastIndexOf(",") == tempString.Length - 1) sb.Remove(tempString.Length - 1, 1);
@@ -112,17 +110,15 @@ namespace UnconsciousBias.ViewModels
                 double averageSentimentScore = scoreSum / scoreCount;
                 int sentimentPercentage = Convert.ToInt32(averageSentimentScore * 100);
 
-                 result = new UnconsiousBiasResult()
+                result = new UnconsciousBiasResult()
                 {
-                    Positivity = 90,
+                    Positivity = sentimentPercentage,
                     KeyWords = "TODO",
                     Topics = "TODO" ,
                     PositivityGraph = sentimentScores,
-                     Person = Value
-                 };
+                    Person = Value
+                };
             }
-
-            //NavigationService.
 
             // can pass value to other screen and do fancy display
             NavigationService.Navigate(typeof(Views.DetailPage), result);
@@ -141,7 +137,7 @@ namespace UnconsciousBias.ViewModels
 
     }
 
-    public class UnconsiousBiasResult
+    public class UnconsciousBiasResult
     {
         public int Positivity { get; set; }
         public string KeyWords { get; set; }

@@ -27,8 +27,8 @@ namespace UnconsciousBias.ViewModels
         private string _message = "Default";
         public string Message { get { return _message; } set { Set(ref _message, value); } }
 
-        private UnconsiousBiasResult _result;
-        public UnconsiousBiasResult Result { get { return _result; } set { Set(ref _result, value); } }
+        private UnconsciousBiasResult _result;
+        public UnconsciousBiasResult Result { get { return _result; } set { Set(ref _result, value); } }
 
 
         private ObservableCollection<Datapoint> _positivityGraph;
@@ -45,7 +45,7 @@ namespace UnconsciousBias.ViewModels
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
-            _result =  parameter as UnconsiousBiasResult;
+            _result =  parameter as UnconsciousBiasResult;
             //_result.PositivityGraph = new double[] { 0.924, 0.806, 0.976, 0.945, 0.999, 0.681, 0.973, 0.994, 0.958, 0.553};
             this.Message = $"Your overall average positivity towards {_result.Person} is";
 
