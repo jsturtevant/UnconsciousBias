@@ -7,7 +7,7 @@ Sometimes we may not notice if the tone of our emails is overly positive or nega
 James Sturtevant and Jennifer Marsman developed “Unconscious Bias” at the hack.nyc event on April 13-14, 2016.  We created a Windows universal application in which the user can specify an email address.  Then, we use the Office 365 APIs to access the user’s email and get messages that were sent to that email address.  The emails are analyzed for positive/negative sentiment by the Microsoft Cognitive Services Text Analytics service.  Then we display the average sentiment score of your emails to that email address, along with a chart of your sentiment over time.  
 
 ## Setup
-You will need [Visual Studio 2015 Community](UnconsciousBias/UnconsciousBias/Helpers/TextAnalyticsHelper.cs) with Windows 10 SDK installed (install through advanced options learn more at [Visual Studio Shorts](https://channel9.msdn.com/Blogs/Visual-Studio-Shorts/Installing-Visual-Studio-2015-Community) on [Channel9](https://channel9.msdn.com).
+You will need [Visual Studio 2015 Community](UnconsciousBias/UnconsciousBias/Helpers/TextAnalyticsHelper.cs) with Windows 10 SDK installed (install through advanced options learn more at [Visual Studio Shorts](https://channel9.msdn.com/Blogs/Visual-Studio-Shorts/Installing-Visual-Studio-2015-Community) on [Channel9](https://channel9.msdn.com)).
 
 1. Obtain your Office 365 API from the [App Registration portal](http://dev.office.com/app-registration)
 2. Add your ```ClientId``` and ```Return URL``` to [UnconsciousBias/UnconsciousBias/Styles/Secrets.xaml](https://github.com/jsturtevant/UnconsciousBias/blob/master/UnconsciousBias/Styles/Secrets.xaml)
