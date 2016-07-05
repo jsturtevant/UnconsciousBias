@@ -14,3 +14,6 @@ You will need [Visual Studio 2015 Community](UnconsciousBias/UnconsciousBias/Hel
 3. Obtain a Cognitive Services ```Text Analytics``` API Key from [Cognitive Services Subsciptions](https://www.microsoft.com/cognitive-services/en-US/subscriptions)
 4. Add the key to ```AccountKey``` Property in [UnconsciousBias/UnconsciousBias/Helpers/TextAnalyticsHelper.cs](https://github.com/jsturtevant/UnconsciousBias/blob/master/UnconsciousBias/Helpers/TextAnalyticsHelper.cs)
 5. Build and Run
+
+## Privacy Policy
+You can find our latest Privacy Policy at http://aka.ms/bias.
