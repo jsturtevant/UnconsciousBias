@@ -161,6 +161,15 @@
                         <Run Text="{Binding Version}" />
                     </TextBlock>
 
+                    <TextBlock x:Name="poweredby"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.Below="VersionTextBlock">
+                         Powered by Microsoft&#39;s Cognitive Services: <Hyperlink NavigateUri="https://www.microsoft.com/cognitive-services">https://www.microsoft.com/cognitive-services</Hyperlink>
+                    </TextBlock>
+
+
+                   
+
                 </RelativePanel>
             </PivotItem>
         </Pivot>
