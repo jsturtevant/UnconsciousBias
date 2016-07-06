@@ -21,5 +21,8 @@ You can find our latest Privacy Policy at http://aka.ms/bias.
 ## Image
 Image: [Injustice by Luis Prado from the Noun Project](https://thenounproject.com/search/?q=bias&i=89997)
 
+## Template 10 
+[Template 10](https://github.com/Windows-XAML/Template10) was used in the project.
+
 ## Cognitive Services Terms and Developer Code of Conduct
 [Cognitive Services TOU](http://research.microsoft.com/en-us/um/legal/CognitiveServicesTerms20160628.htm) and [Developer Code of Conduct](http://research.microsoft.com/en-us/UM/legal/DeveloperCodeofConductforCognitiveServices.htm)
