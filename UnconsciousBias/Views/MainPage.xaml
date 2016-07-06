@@ -56,10 +56,28 @@
                 </Interactivity:Interaction.Behaviors>
             </TextBox>
 
+          
+
         </controls:Resizer>
 
+        <TextBlock 
+            Name="Consent"
+            RelativePanel.AlignBottomWithPanel="true"
+                   RelativePanel.AlignLeftWithPanel="True"
+                   Margin="16,16,16,16"
+            TextWrapping="Wrap">
+            * By using this app you consent you to allowing emails that you have sent to the user specified 
+                            to be processed by this application to gain insight into your Unconscious Biases.  
+                            We only process the email written by you.  
+                            You can read more about our privacy policy at
+            <Hyperlink NavigateUri="http://aka.ms/bias"> http://aka.ms/bias</Hyperlink>.
+        </TextBlock>
+        
+   
+
+
         <Button x:Name="submitButton"
-                Click="{x:Bind ViewModel.GotoDetailsPage}" Content="Get Insights"
+                Click="{x:Bind ViewModel.GotoDetailsPage}" Content="Get Insights *"
                 RelativePanel.AlignBottomWith="parameterResizer"
                 RelativePanel.RightOf="parameterResizer" />
     </RelativePanel>
