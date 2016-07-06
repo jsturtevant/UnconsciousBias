@@ -140,11 +140,23 @@
                                RelativePanel.AlignLeftWithPanel="True"
                                RelativePanel.Below="PublisherTextBlock">
                             Icon: <Hyperlink NavigateUri="https://thenounproject.com/search/?q=bias&amp;i=89997"> Injustice by Luis Prado from the Noun Project </Hyperlink>
+                        
+                      
                     </TextBlock>
 
-                    <TextBlock x:Name="VersionTextBlock"
+                    <TextBlock x:Name="legal"
                                RelativePanel.AlignLeftWithPanel="True"
                                RelativePanel.Below="ImageAttribution">
+                             <Hyperlink NavigateUri="http://research.microsoft.com/en-us/um/legal/CognitiveServicesTerms20160628.htm">Cognitive Services TOU</Hyperlink>
+                                <LineBreak></LineBreak>
+                             <Hyperlink NavigateUri="http://research.microsoft.com/en-us/UM/legal/DeveloperCodeofConductforCognitiveServices.htm">Developer Code of Conduct</Hyperlink>
+                    </TextBlock>
+
+
+                   
+                    <TextBlock x:Name="VersionTextBlock"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.Below="legal">
                         <Run>Version</Run>
                         <Run Text="{Binding Version}" />
                     </TextBlock>

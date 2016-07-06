@@ -20,3 +20,6 @@ You can find our latest Privacy Policy at http://aka.ms/bias.
 
 ## Image
 Image: [Injustice by Luis Prado from the Noun Project](https://thenounproject.com/search/?q=bias&i=89997)
+
+## Cognitive Services Terms and Developer Code of Conduct
+[Cognitive Services TOU](http://research.microsoft.com/en-us/um/legal/CognitiveServicesTerms20160628.htm) and [Developer Code of Conduct](http://research.microsoft.com/en-us/UM/legal/DeveloperCodeofConductforCognitiveServices.htm)
