@@ -136,9 +136,15 @@
                                RelativePanel.Below="DisplayNameTextBlock"
                                Text="{Binding Publisher}" />
 
-                    <TextBlock x:Name="VersionTextBlock"
+                    <TextBlock x:Name="ImageAttribution"
                                RelativePanel.AlignLeftWithPanel="True"
                                RelativePanel.Below="PublisherTextBlock">
+                            Icon: <Hyperlink NavigateUri="https://thenounproject.com/search/?q=bias&amp;i=89997"> Injustice by Luis Prado from the Noun Project </Hyperlink>
+                    </TextBlock>
+
+                    <TextBlock x:Name="VersionTextBlock"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.Below="ImageAttribution">
                         <Run>Version</Run>
                         <Run Text="{Binding Version}" />
                     </TextBlock>

@@ -17,3 +17,6 @@ You will need [Visual Studio 2015 Community](UnconsciousBias/UnconsciousBias/Hel
 
 ## Privacy Policy
 You can find our latest Privacy Policy at http://aka.ms/bias.
+
+## Image
+Image: [Injustice by Luis Prado from the Noun Project](https://thenounproject.com/search/?q=bias&i=89997)
